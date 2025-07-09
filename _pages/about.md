@@ -17,4 +17,4 @@ In Spring 2025, I spent a semester on exchange at Virginia Tech.
 
 I'm currently a research intern at Rice University, working with Dr. Xia (Ben) Hu and Dr. Guanchu Wang.
 
-You may refer to my CV for more details.
+You may refer to my [CV](/files/CV.pdf) for more details.
