@@ -7,14 +7,14 @@ redirect_from:
   - /about.html
 ---
 
-I’m a final-year undergraduate in Electrical and Electronic Engineering at Nanyang Technological University (NTU), Singapore.
+I am currently a master's student in Computer Engineering at the National University of Singapore (NUS). I am a member of the [SHOW Lab](https://sites.google.com/view/showlab), where I work with [Anno Chen](https://chenanno.github.io/).
 
 My research interests lie in AI and machine learning, with a focus on Graph Neural Networks and Large Language Models.
 
-I participated in the Undergraduate Research Experience on Campus (URECA) at NTU under the supervision of Prof. Chen Lihui.
+I received my bachelor's degree from Nanyang Technological University (NTU) with Highest Distinction. During my undergraduate studies, I worked with [Prof. Lihui Chen](https://dr.ntu.edu.sg/entities/person/Chen-Lihui).
 
 In Spring 2025, I spent a semester on exchange at Virginia Tech.
 
-I'm currently a research intern at Rice University, working with Dr. Xia (Ben) Hu and Dr. Guanchu Wang.
+In Summer 2025, I was a research intern at Rice University.
 
 You may refer to my [CV](/files/CV.pdf) for more details.

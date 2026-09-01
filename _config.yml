@@ -25,9 +25,9 @@ author:
   avatar           : "profile.png"
   name             : "Yang Ziyi"
   pronouns         : # example: "she/her"  
-  bio              : "Final Year Undergraduate at NTU, intrested in GNN, LLM and Explainable AI"
+  bio              : "Master's student in Computer Engineering at NUS, interested in GNNs, LLMs, and Explainable AI"
   location         : "Singapore"
-  employer         : "Nanyang Technological University"
+  employer         : "National University of Singapore"
   uri              : # URL
   email            : "zyang025@e.ntu.edu.sg" 
 
