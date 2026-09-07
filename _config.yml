@@ -22,7 +22,7 @@ repository               : "academicpages/academicpages.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "rei_stmonica.jpg"
   name             : "Yang Ziyi"
   pronouns         : # example: "she/her"  
   bio              : "Master's student in Computer Engineering at NUS, interested in GNNs, LLMs, and Explainable AI"
