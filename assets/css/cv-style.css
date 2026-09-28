@@ -2,7 +2,7 @@
 .cv-container {
   max-width: 1000px;
   margin: 0 auto;
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   color: #333;
   line-height: 1.6;
 }
@@ -85,7 +85,7 @@
 
 .cv-item-title {
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.125rem;
 }
 
 .cv-item-date {
@@ -141,7 +141,7 @@
   background-color: #f2f2f2;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 }
 
 /* Project Styles */
@@ -157,7 +157,7 @@
   color: #2a7ae2;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 }
 
 /* Languages Styles */
@@ -178,7 +178,7 @@
 
 .cv-language-fluency {
   color: #666;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 }
 
 /* Interests Styles */
@@ -203,7 +203,7 @@
   background-color: #f9f9f9;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 }
 
 /* References Styles */

@@ -247,6 +247,18 @@
     white-space: nowrap;
   }
 
+  .author__email {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 5px;
+    padding: 2px 5px 2px 0;
+    white-space: nowrap;
+
+    i {
+      flex-shrink: 0;
+    }
+  }
+
   a {
     display: block;
     margin-bottom: 5px;
@@ -254,7 +266,7 @@
     padding-top: 2px;
     padding-bottom: 2px;
     color: inherit;
-    font-size: $type-size-5;
+    font-size: $type-size-6;
     text-decoration: none;
 
     &:hover {

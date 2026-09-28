@@ -59,6 +59,10 @@
     font-size: 1em;
   }
 
+  p.intro__masters {
+    margin-bottom: 0.75em; // Half a line at the body's 1.5 line height.
+  }
+
   /* paragraph indents */
   p {
     margin: 0 0 $indent-var;
