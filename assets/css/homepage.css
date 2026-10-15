@@ -28,8 +28,8 @@ html { scroll-behavior: smooth; background: #f3f6f9; }
 .academic-home a:hover { color: #bc5724; text-decoration: underline; }
 .academic-home a:focus-visible { outline: 2px solid var(--home-blue); outline-offset: 4px; }
 .home-layout {
-  display: grid; grid-template-columns: 238px minmax(0, 872px);
-  gap: clamp(48px, 7vw, 132px); max-width: 1340px;
+  display: grid; grid-template-columns: 280px minmax(0, 872px);
+  gap: clamp(32px, 4vw, 80px); max-width: 1340px;
   margin: 0 auto; padding: 36px 40px 0; align-items: start;
 }
 .academic-home .home-sidebar {
@@ -80,7 +80,7 @@ html { scroll-behavior: smooth; background: #f3f6f9; }
 .news-card { display: flex; align-items: baseline; gap: 24px; padding: 17px 22px; border: 2px solid var(--home-heading); border-radius: 18px; }
 .news-card time { flex: 0 0 auto; color: var(--home-blue); font-size: var(--fs-md); font-weight: 700; }
 .news-card p { margin: 0; font-size: var(--fs-md); }
-.pub-card { display: grid; grid-template-columns: minmax(0, 36fr) minmax(0, 64fr); gap: 22px; align-items: center; padding: 20px; }
+.pub-card { display: grid; grid-template-columns: minmax(0, 36fr) minmax(0, 64fr); gap: 20px; align-items: center; padding: 16px; }
 .pub-thumb { border: 1px solid var(--home-border); border-radius: 8px; overflow: hidden; }
 .pub-thumb img { display: block; width: 100%; height: auto; }
 .pub-info { min-width: 0; }
@@ -123,9 +123,13 @@ html { scroll-behavior: smooth; background: #f3f6f9; }
 .visitor-map iframe { display: block; width: 100%; aspect-ratio: 900 / 409; border: 0; }
 .skip-link { position: fixed; top: -100px; left: 16px; z-index: 10; background: white; padding: 8px 16px; }
 .skip-link:focus { top: 10px; }
-@media (min-width: 1700px) { .home-layout { max-width: 1510px; grid-template-columns: 250px minmax(0, 980px); gap: 150px; } }
+@media (min-width: 801px) {
+  .home-outline { width: max-content; min-width: 230px; max-width: 100%; margin: 24px auto 0; }
+  .home-outline a { white-space: nowrap; }
+}
+@media (min-width: 1700px) { .home-layout { max-width: 1510px; grid-template-columns: 280px minmax(0, 980px); gap: 120px; } }
 @media (max-width: 1100px) {
-  .home-layout { grid-template-columns: 215px minmax(0, 1fr); gap: 36px; padding: 28px; }
+  .home-layout { grid-template-columns: 280px minmax(0, 1fr); gap: 28px; padding: 28px; }
   .pub-card { grid-template-columns: minmax(0, 32fr) minmax(0, 68fr); gap: 16px; padding: 16px; }
 }
 @media (max-width: 800px) {

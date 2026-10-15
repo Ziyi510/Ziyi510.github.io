@@ -16,7 +16,8 @@ redirect_from:
 I am currently a master’s student in Computer Engineering at the **National University of Singapore (NUS)**, where I am a member of the [**SHOW Lab**](https://sites.google.com/view/showlab), supervised by Prof. Mike Zheng Shou and working closely with [**Anno Yanzhe Chen**](https://chenanno.github.io/).
 {: .intro__masters}
 
-Prior to this, I obtained my bachelor's degree with **Highest Distinction** in Electrical & Electronic Engineering (EEE) at **Nanyang Technological University (NTU)**, where I worked with [Prof. Lihui Chen](https://dr.ntu.edu.sg/entities/person/Chen-Lihui).
+Prior to this, I obtained my bachelor's degree with **Highest Distinction** in Electrical & Electronic Engineering (EEE) at<br>
+**Nanyang Technological University (NTU)**, where I worked with [Prof. Lihui Chen](https://dr.ntu.edu.sg/entities/person/Chen-Lihui).
 
 My research interests lie in **large language models, AI agents, and embodied agents**.
 
@@ -55,7 +56,7 @@ Please see my [CV]({{ '/files/CV.pdf' | relative_url }}) for more details.
   </div>
   <div class="pub-info">
     <h3 class="pub-title">{{ paper.title }}</h3>
-    <p class="authors">{{ paper.authors | replace: 'Ziyi Yang', '<strong>Ziyi Yang</strong>' }}</p>
+    <p class="authors">{{ paper.authors_display | default: paper.authors | replace: 'Ziyi Yang', '<strong>Ziyi Yang</strong>' }}</p>
     <p class="venue preprint">{{ paper.venue }}</p>
     <p class="pub-summary">{{ paper.summary }}</p>
     <div class="pub-links">
