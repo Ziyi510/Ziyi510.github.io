@@ -12,6 +12,7 @@ enabled = true
 
 [vars]
 SITE_ORIGIN = "https://ziyi510.github.io"
+VISIT_WINDOW_SECONDS = "86400"
 
 [[d1_databases]]
 binding = "DB"

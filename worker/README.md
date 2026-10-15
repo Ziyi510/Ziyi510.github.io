@@ -16,6 +16,7 @@
 ```sh
 cd /Users/ziyi/Documents/Ziyi510.github.io/worker
 npx wrangler@4 login --device --scopes account:read user:read workers:write workers_scripts:write d1:write
+npx wrangler@4 d1 execute ziyi510-visitors --remote --command "$(cat schema.sql)"
 npx wrangler@4 deploy
 ```
 
@@ -32,7 +33,8 @@ npx wrangler@4 d1 create ziyi510-visitors
 将返回的数据库 UUID 填到 `wrangler.toml` 的 `database_id`，然后运行：
 
 ```sh
-npx wrangler@4 d1 execute ziyi510-visitors --remote --file schema.sql
+npx wrangler@4 d1 execute ziyi510-visitors --remote --command "$(cat schema.sql)"
+openssl rand -hex 32 | npx wrangler@4 secret put IP_HASH_SECRET
 npx wrangler@4 deploy
 ```
 
@@ -40,16 +42,18 @@ npx wrangler@4 deploy
 
 ## 计数方式
 
-- 每次正式网站加载计一次浏览；同一浏览器每 24 小时最多请求计一次地点访问。清理浏览器存储或使用另一浏览器会重新计数，因此不是严格的独立人数。
+- 总浏览数和地点访问均由服务器按 IP 去重：从上次成功计数起满 24 小时，再次访问才加 1。期间刷新不计数，也不延长等待时间。换浏览器、清理存储不会绕过去重。
+- 多人共用一个公网 IP 时，24 小时内合计一次；同一个人换 IP 可能再次计数，因此不是严格的独立人数。已有历史总数保留，新规则不会回溯修正旧数据。
+- `wrangler.toml` 的 `VISIT_WINDOW_SECONDS = "86400"` 控制间隔。`IP_HASH_SECRET` 只在首次部署时创建，常规部署保留它；更换密钥会使现有去重记录失效。
 - 本地预览只读取，不增加浏览量。接口未配置时显示现有底图；请求失败会明确提示统计暂不可用。
-- 使用 Cloudflare 提供的城市级地理位置；不存原始 IP。此版本未包含参考站额外的中国 IP 地理库，城市定位可能有偏差。
+- 使用 Cloudflare 提供的城市级地理位置；不存原始 IP。D1 临时保存由服务端密钥计算的 HMAC-SHA256 摘要，过期记录在后续访问时清理，不在公开接口返回。此版本未包含参考站额外的中国 IP 地理库，城市定位可能有偏差。
 - 浏览量接口校验网站 Origin，过滤常见机器人；Origin 和浏览器标记可被伪造，计数不用于审计或计费。
 - 公开接口只提供汇总数据，访问记录不会包含姓名或浏览器标识。
 
 ## 检查
 
 ```sh
-node --test worker.test.mjs
+node --test worker.test.mjs # Node.js 22.13+，使用真实 SQLite 验证事务和 24 小时边界
 node --check ../assets/js/visitor-map.js
 ```
 

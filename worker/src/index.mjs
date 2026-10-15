@@ -1,6 +1,6 @@
 /* Adapted from ChenAnno/ChenAnno.github.io (MIT; assets/licenses/chenanno-LICENSE.txt).
-   Each page load counts as a view; the browser requests a place visit once per
-   24 hours. Store city-level aggregates, never raw IP addresses. */
+   Count each IP once per rolling window. Store city aggregates and temporary
+   keyed IP digests, never raw IP addresses. */
 const BOTS = /bot|crawl|spider|slurp|preview|headless|lighthouse|monitor|curl|wget|python/i;
 
 export default {
@@ -23,10 +23,29 @@ export default {
     if (pathname === '/api/visit' && request.method === 'POST') {
       if (request.headers.get('Origin') !== env.SITE_ORIGIN) return reply('Forbidden', 403);
       if (BOTS.test(request.headers.get('User-Agent') || '')) return reply(null, 204);
-      let data;
-      try { data = await request.json(); } catch { return reply('Invalid JSON', 400); }
-      const writes = [env.DB.prepare("UPDATE totals SET n = n + 1 WHERE name = 'pageviews'")];
-      if (data && data.first === true) {
+      const ip = request.headers.get('CF-Connecting-IP');
+      if (!ip) return reply('Missing visitor address', 400);
+      if (!env.IP_HASH_SECRET) return reply('Counter not configured', 503);
+      const windowSeconds = Number(env.VISIT_WINDOW_SECONDS || 86400);
+      if (!Number.isFinite(windowSeconds) || windowSeconds <= 0) return reply('Invalid counter window', 503);
+      const encoder = new TextEncoder();
+      const key = await crypto.subtle.importKey('raw', encoder.encode(env.IP_HASH_SECRET),
+        { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+      const digest = await crypto.subtle.sign('HMAC', key, encoder.encode(ip));
+      const hash = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+      const now = Date.now(), cutoff = now - windowSeconds * 1000;
+      const event = crypto.randomUUID();
+      // The event token lets every subsequent write check whether THIS request
+      // claimed the window. D1 executes this batch as one atomic transaction.
+      const writes = [env.DB.prepare(
+        'INSERT INTO visit_dedupe (ip_hash, last_counted, event_id) VALUES (?1, ?2, ?3) ' +
+        'ON CONFLICT (ip_hash) DO UPDATE SET last_counted = excluded.last_counted, event_id = excluded.event_id ' +
+        'WHERE visit_dedupe.last_counted <= ?4'
+      ).bind(hash, now, event, cutoff), env.DB.prepare(
+        "UPDATE totals SET n = n + 1 WHERE name = 'pageviews' " +
+        'AND EXISTS (SELECT 1 FROM visit_dedupe WHERE ip_hash = ?1 AND event_id = ?2)'
+      ).bind(hash, event)];
+      {
         const cf = request.cf || {};
         const coordinate = (value, limit) => {
           if (value === null || value === undefined || value === '') return null;
@@ -36,10 +55,12 @@ export default {
         const lat = coordinate(cf.latitude, 90), lon = coordinate(cf.longitude, 180);
         const city = cf.city || '', cc = cf.country || 'XX';
         writes.push(env.DB.prepare(
-          'INSERT INTO places (key, city, cc, lat, lon, n, last) VALUES (?1, ?2, ?3, ?4, ?5, 1, ?6) ' +
+          'INSERT INTO places (key, city, cc, lat, lon, n, last) SELECT ?1, ?2, ?3, ?4, ?5, 1, ?6 ' +
+          'WHERE EXISTS (SELECT 1 FROM visit_dedupe WHERE ip_hash = ?7 AND event_id = ?8) ' +
           'ON CONFLICT (key) DO UPDATE SET n = n + 1, last = ?6'
-        ).bind(`${cc}|${city}|${lat}|${lon}`, city, cc, lat, lon, Date.now()));
+        ).bind(`${cc}|${city}|${lat}|${lon}`, city, cc, lat, lon, now, hash, event));
       }
+      writes.push(env.DB.prepare('DELETE FROM visit_dedupe WHERE last_counted <= ?1').bind(cutoff));
       await env.DB.batch(writes);
       return reply(null, 204);
     }

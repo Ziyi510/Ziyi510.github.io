@@ -4,20 +4,13 @@
   if (!map || !window.fetch) return;
   var base = map.dataset.api.replace(/\/$/, '');
   var status = document.querySelector('.visitor-map__status');
-  var key = 'ziyi510:visit:last';
   var recorded = Promise.resolve();
   // Local previews can display data but never add visits.
   if (location.origin === map.dataset.siteOrigin) {
-    var first = true;
-    try { first = Date.now() - (+localStorage.getItem(key) || 0) > 864e5; } catch (e) {}
     recorded = fetch(base + '/api/visit', {
       method: 'POST', keepalive: true, credentials: 'omit',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ first: first })
-    }).then(function (r) {
-      if (r.ok && first) {
-        try { localStorage.setItem(key, Date.now()); } catch (e) {}
-      }
+      body: '{}'
     }).catch(function () {});
   }
   recorded.then(function () {
