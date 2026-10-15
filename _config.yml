@@ -17,7 +17,9 @@ url                      : https://ziyi510.github.io # the base hostname & proto
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "Ziyi510/Ziyi510.github.io"
 
-# Optional map embed URL for this site's own visitor statistics.
+# Cloudflare Worker origin (no trailing path), set after deployment.
+visitor_map_api_url      : "https://ziyi510-visitors.yzy23072018.workers.dev"
+# Optional external map embed, used only when no Worker is configured.
 visitor_map_embed_url    : ""
 
 # Site Author - The following control what appear as part of the author content on the side bar.
@@ -164,6 +166,7 @@ include:
   - _pages
   - files
 exclude:
+  - worker
   - "*.sublime-project"
   - "*.sublime-workspace"
   - .asset-cache

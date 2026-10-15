@@ -1,5 +1,12 @@
 <figure class="visitor-map" aria-label="Visitor map">
-  {% if site.visitor_map_embed_url and site.visitor_map_embed_url != '' %}
+  {% if site.visitor_map_api_url and site.visitor_map_api_url != '' %}
+  <div id="visitor-map" data-api="{{ site.visitor_map_api_url | escape }}" data-site-origin="{{ site.url | escape }}">
+    <img src="{{ '/images/visitor-map.svg' | relative_url }}" alt="World map" width="900" height="409" loading="lazy">
+    <svg viewBox="0 0 900 409" aria-label="Visitor locations"></svg>
+    <span class="visitor-map__tip" hidden></span>
+  </div>
+  <figcaption class="visitor-map__status">Visitor map · Loading statistics…</figcaption>
+  {% elsif site.visitor_map_embed_url and site.visitor_map_embed_url != '' %}
   <iframe src="{{ site.visitor_map_embed_url | escape }}" title="Visitor map" loading="lazy" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe>
   {% else %}
   <img src="{{ '/images/visitor-map.svg' | relative_url }}" alt="World map; visitor statistics are not connected yet" width="900" height="409" loading="lazy">

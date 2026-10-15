@@ -6,7 +6,7 @@
 - `images/visitor-map.svg`：参考仓库的点阵世界地图底图，基于 Natural Earth。
 - `images/logo-nus.png`：参考仓库使用的 NUS 校徽，仅用于标识教育经历。
 
-浏览地图目前仅显示底图，不含访客记录。将站点自己的地图嵌入地址填入 `_config.yml` 的 `visitor_map_embed_url` 后即可显示统计地图；不要使用参考站的统计接口或记录。
+访客地图绘制和统计后端参考同一仓库（MIT），已适配独立的 Cloudflare Worker + D1，部署步骤见 `worker/README.md`。当前未配置接口时仅显示底图。使用本站自己的数据库，不导入参考站的访客记录。
 
 ## 教育经历标志
 

@@ -1,0 +1,19 @@
+name = "ziyi510-visitors"
+main = "src/index.mjs"
+compatibility_date = "2026-10-15"
+workers_dev = true
+preview_urls = false
+
+[observability]
+enabled = true
+
+[observability.logs]
+enabled = true
+
+[vars]
+SITE_ORIGIN = "https://ziyi510.github.io"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ziyi510-visitors"
+database_id = "b843e22f-359f-43c9-afd8-88eaec667024"
