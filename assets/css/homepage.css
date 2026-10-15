@@ -117,7 +117,7 @@ html { scroll-behavior: smooth; background: #f3f6f9; }
 .academic-home .edu-body .edu-detail { font-size: var(--fs-sm); color: var(--home-muted); }
 .home-footer { border-top: 1px solid #c9d3dd; padding: 30px 0 36px; text-align: center; color: var(--home-muted); }
 .home-footer p { font-size: var(--fs-xs); margin: 2px 0; }
-.visitor-map { width: 84%; max-width: 720px; margin: 0 auto 22px; }
+.visitor-map { display: block; width: 84%; max-width: 720px; margin: 0 auto 22px; }
 .visitor-map img { width: 100%; height: auto; display: block; }
 .visitor-map figcaption { margin: 9px 0 0; font-size: var(--fs-xs); color: var(--home-muted); }
 .visitor-map iframe { display: block; width: 100%; aspect-ratio: 900 / 409; border: 0; }
@@ -176,7 +176,7 @@ html { scroll-behavior: smooth; background: #f3f6f9; }
   font-family: 'Charis SIL', Georgia, serif;
 }
 
-#visitor-map { position: relative; }
+#visitor-map { position: relative; width: 100%; }
 #visitor-map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 #visitor-map circle { stroke: white; stroke-width: 1; }
 .visitor-map__tip { position: absolute; transform: translate(-50%, -120%); background: #224b77; color: white; padding: 4px 8px; border-radius: 5px; font-size: var(--fs-xs); white-space: nowrap; pointer-events: none; }
