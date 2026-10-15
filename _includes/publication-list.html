@@ -1,0 +1,14 @@
+{% assign publications = site.publications | sort: 'date' | reverse %}
+{% assign previous_year = '' %}
+<ol class="pub-list">
+  {% for paper in publications %}
+  {% assign year = paper.date | date: '%Y' %}
+  <li class="{% if year != previous_year %}is-year-first {% endif %}{% if forloop.first %}is-first {% endif %}{% if forloop.last %}is-last{% endif %}">
+    {% if year != previous_year %}<span class="pub-year">{{ year }}</span>{% endif %}
+    <h3 class="pub-title">{{ paper.title }}</h3>
+    <p class="authors">{{ paper.authors | replace: 'Ziyi Yang', '<strong>Ziyi Yang</strong>' }}</p>
+    <p class="pub-meta"><span class="venue{% if paper.preprint %} preprint{% endif %}">{{ paper.venue }}</span> <a href="{{ paper.paperurl }}">[Paper]</a></p>
+  </li>
+  {% assign previous_year = year %}
+  {% endfor %}
+</ol>
