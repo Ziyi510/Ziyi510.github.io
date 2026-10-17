@@ -4,7 +4,7 @@ collection: publications
 category: conferences
 permalink: /publication/FanChuan Dataset
 excerpt: 'We propose a multilingual and graph-structured parody benchmark containing 7 datasets and evaluate 5 types of methods  in 3 parody-related tasks.'
-authors: "Y. Zheng, S. Li, F. Wu, Ziyi Yang, H. Liu, Z. Hu, X. Chen, Z. Wang, J. Chen, S. Luan, J. Xu, and L. Chen"
+authors: "Yilun Zheng, Sha Li, Fangkun Wu, Yang Ziyi, Lin Hongchao, Zhichao Hu, Cai Xinjun, Ziming Wang, Jinxuan Chen, Sitao Luan, Jiahao Xu, Lihui Chen"
 date: 2025-02-23
 venue: 'ACL 2025 Findings'
 #paperurl: 'http://academicpages.github.io/files/paper3.pdf'
