@@ -16,8 +16,9 @@ redirect_from:
 I am currently a master’s student in Computer Engineering at the **National University of Singapore (NUS)**, where I am a member of the [**SHOW Lab**](https://sites.google.com/view/showlab), supervised by Prof. Mike Zheng Shou and working closely with [**Anno Yanzhe Chen**](https://chenanno.github.io/).
 {: .intro__masters}
 
-Prior to this, I obtained my bachelor's degree with **Highest Distinction** in Electrical & Electronic Engineering (EEE) at<br>
+Prior to this, I obtained my bachelor's degree with **Highest Distinction** in Electrical & Electronic Engineering (EEE) at<br class="bio-school-break">
 **Nanyang Technological University (NTU)**, where I worked with [Prof. Lihui Chen](https://dr.ntu.edu.sg/entities/person/Chen-Lihui).
+{: .intro__bachelors}
 
 My research interests lie in **large language models, AI agents, and embodied agents**.
 

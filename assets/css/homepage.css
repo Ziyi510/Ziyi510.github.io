@@ -28,9 +28,9 @@ html { scroll-behavior: smooth; background: #f3f6f9; }
 .academic-home a:hover { color: #bc5724; text-decoration: underline; }
 .academic-home a:focus-visible { outline: 2px solid var(--home-blue); outline-offset: 4px; }
 .home-layout {
-  display: grid; grid-template-columns: 280px minmax(0, 872px);
-  gap: clamp(32px, 4vw, 80px); max-width: 1340px;
-  margin: 0 auto; padding: 36px 40px 0; align-items: start;
+  display: grid; grid-template-columns: 238px minmax(0, 980px);
+  gap: 48px; max-width: 1330px;
+  margin: 0 auto; padding: 36px 32px 0; align-items: start;
 }
 .academic-home .home-sidebar {
   position: sticky; top: 30px; float: none; width: auto; max-width: none;
@@ -71,6 +71,7 @@ html { scroll-behavior: smooth; background: #f3f6f9; }
 .home-section { margin: 0 0 38px; scroll-margin-top: 24px; }
 .home-section h1 { margin: 0 0 16px; color: var(--home-heading); font-size: var(--fs-lg); font-weight: 700; line-height: 1.4; letter-spacing: .08em; text-transform: uppercase; }
 #biography h1 { padding-bottom: 10px; border-bottom: 3px solid var(--home-blue); }
+#biography a { white-space: nowrap; }
 .home-section h1 span { display: inline-block; font-size: var(--fs-lg); margin-right: 4px; }
 .home-section h2 { margin: 22px 0 12px; padding: 0; border: 0; font-size: var(--fs-md); }
 .home-section p { margin: 0 0 10px; }
@@ -124,12 +125,16 @@ html { scroll-behavior: smooth; background: #f3f6f9; }
 .skip-link { position: fixed; top: -100px; left: 16px; z-index: 10; background: white; padding: 8px 16px; }
 .skip-link:focus { top: 10px; }
 @media (min-width: 801px) {
-  .home-outline { width: max-content; min-width: 230px; max-width: 100%; margin: 24px auto 0; }
+  .home-outline { width: max-content; min-width: min(230px, 100%); max-width: 100%; margin: 24px auto 0; }
   .home-outline a { white-space: nowrap; }
 }
-@media (min-width: 1700px) { .home-layout { max-width: 1510px; grid-template-columns: 280px minmax(0, 980px); gap: 120px; } }
+@media (min-width: 1700px) { .home-layout { max-width: 1510px; grid-template-columns: 250px minmax(0, 980px); gap: 150px; padding-inline: 40px; } }
+@media (min-width: 1101px) and (max-width: 1350px) {
+  .home-layout { grid-template-columns: 215px minmax(0, 980px); gap: 28px; padding-inline: 24px; }
+}
 @media (max-width: 1100px) {
-  .home-layout { grid-template-columns: 280px minmax(0, 1fr); gap: 28px; padding: 28px; }
+  #biography .bio-school-break { display: none; }
+  .home-layout { grid-template-columns: 215px minmax(0, 1fr); gap: 36px; padding: 28px; }
   .pub-card { grid-template-columns: minmax(0, 32fr) minmax(0, 68fr); gap: 16px; padding: 16px; }
 }
 @media (max-width: 800px) {
