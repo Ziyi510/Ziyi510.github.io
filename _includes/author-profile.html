@@ -7,7 +7,15 @@
 <div itemscope itemtype="http://schema.org/Person">
 
   <div class="author__avatar">
-    {% if author.avatar contains "://" %}
+    {% if include.interactive_avatar %}
+    <button class="portrait-switch" type="button"
+            data-alternate-src="{{ '/images/photo_YangZiyi.jpg' | relative_url }}"
+            aria-label="Show portrait photo" title="Switch profile picture">
+      <img src="{{ author.avatar | prepend: '/images/' | relative_url }}"
+           alt="{{ author.name }}" fetchpriority="high" />
+      <span class="portrait-noise" aria-hidden="true"></span>
+    </button>
+    {% elsif author.avatar contains "://" %}
     	<img src="{{ author.avatar }}" alt="{{ author.name }}"  fetchpriority="high" />
     {% else %}
     	<img src="{{ author.avatar | prepend: "/images/" | prepend: base_path }}" class="author__avatar" alt="{{ author.name }}"  fetchpriority="high" />

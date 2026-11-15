@@ -10,7 +10,7 @@
     <a class="skip-link" href="#biography">Skip to content</a>
     <div class="home-layout">
       <aside class="sidebar home-sidebar" aria-label="Profile and navigation">
-        {% include author-profile.html %}
+        {% include author-profile.html interactive_avatar=true %}
         <nav class="home-outline" aria-label="Page sections">
           <p class="outline-title"><span aria-hidden="true">📘</span> Outline</p>
           <ol>
@@ -29,7 +29,7 @@
         </footer>
       </main>
     </div>
-    <script src="{{ '/assets/js/homepage.js' | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/homepage.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
     <script src="{{ '/assets/js/visitor-map.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
   </body>
 </html>
