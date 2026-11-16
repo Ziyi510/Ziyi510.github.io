@@ -12,7 +12,7 @@
             data-alternate-src="{{ '/images/photo_YangZiyi.jpg' | relative_url }}"
             aria-label="Show portrait photo" title="Switch profile picture">
       <img src="{{ author.avatar | prepend: '/images/' | relative_url }}"
-           alt="{{ author.name }}" fetchpriority="high" />
+           alt="{{ author.name }}" fetchpriority="high" draggable="false" />
       <span class="portrait-noise" aria-hidden="true"></span>
     </button>
     {% elsif author.avatar contains "://" %}

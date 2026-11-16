@@ -55,6 +55,7 @@ html { scroll-behavior: smooth; background: #f3f6f9; }
 }
 .academic-home .portrait-switch img {
   max-width: none; padding: 0; border: 0; object-fit: cover;
+  user-select: none; -webkit-user-drag: none;
 }
 .academic-home .portrait-switch .portrait-noise {
   opacity: 0; pointer-events: none;
